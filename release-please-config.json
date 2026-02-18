@@ -2,7 +2,7 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "package-name": "@typespecs/blocknote",
+      "package-name": "@typespecs/blocknote"
     }
   }
 }
