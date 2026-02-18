@@ -11,7 +11,6 @@ namespace BlockNote;
  * A BlockNote document is composed of a hierarchical structure of blocks.
  * Each block can contain inline content and nested child blocks.
  */
-
 /**
  * A unique identifier for a block
  */
@@ -231,7 +230,6 @@ model ParagraphBlock {
 model HeadingBlock {
   id: BlockId;
   type: BlockType.heading;
-
   props: {
     /**
      * The heading level (1 = title, 2 = heading, 3 = subheading)
@@ -247,7 +245,6 @@ model HeadingBlock {
 
     ...DefaultProps;
   };
-
   content: InlineContent[];
   children: Block[];
 }
@@ -262,6 +259,7 @@ model QuoteBlock {
   props: {
     /** @default "default" */
     backgroundColor?: string = "default";
+
     /** @default "default" */
     textColor?: string = "default";
   };
@@ -288,7 +286,6 @@ model BulletListItemBlock {
 model NumberedListItemBlock {
   id: BlockId;
   type: BlockType.numberedListItem;
-
   props: {
     /**
      * The number of this list item
@@ -297,7 +294,6 @@ model NumberedListItemBlock {
 
     ...DefaultProps;
   };
-
   content: InlineContent[];
   children: Block[];
 }
@@ -309,7 +305,6 @@ model NumberedListItemBlock {
 model CheckListItemBlock {
   id: BlockId;
   type: BlockType.checkListItem;
-
   props: {
     /**
      * Whether the list item is checked
@@ -319,7 +314,6 @@ model CheckListItemBlock {
 
     ...DefaultProps;
   };
-
   content: InlineContent[];
   children: Block[];
 }
@@ -343,7 +337,6 @@ model ToggleListItemBlock {
 model CodeBlock {
   id: BlockId;
   type: BlockType.codeBlock;
-
   props: {
     /**
      * The syntax highlighting language
@@ -351,7 +344,6 @@ model CodeBlock {
      */
     language?: string = "text";
   };
-
   content: InlineContent[];
   children: Block[];
 }
@@ -375,18 +367,19 @@ model DividerBlock {
 model FileBlock {
   id: BlockId;
   type: BlockType.file;
-
   props: {
     /** @default "" */
     name?: string = "";
+
     /** @default "" */
     url?: string = "";
+
     /** @default "" */
     caption?: string = "";
+
     /** @default "default" */
     backgroundColor?: string = "default";
   };
-
   content?: void;
   children: Block[];
 }
@@ -398,26 +391,30 @@ model FileBlock {
 model ImageBlock {
   id: BlockId;
   type: BlockType.image;
-
   props: {
     /** @default "default" */
     backgroundColor?: string = "default";
+
     /** @default "left" */
     textAlignment?: "left" | "center" | "right" | "justify" = "left";
+
     /** @default "" */
     name?: string = "";
+
     /** @default "" */
     url?: string = "";
+
     /** @default "" */
     caption?: string = "";
+
     /** @default true */
     showPreview?: boolean = true;
+
     /**
      * The image preview width in pixels. No fixed width when not set.
      */
     previewWidth?: numeric;
   };
-
   content?: void;
   children: Block[];
 }
@@ -429,23 +426,27 @@ model ImageBlock {
 model VideoBlock {
   id: BlockId;
   type: BlockType.video;
-
   props: {
     /** @default "" */
     name?: string = "";
+
     /** @default "" */
     url?: string = "";
+
     /** @default "" */
     caption?: string = "";
+
     /** @default true */
     showPreview?: boolean = true;
+
     previewWidth?: numeric;
+
     /** @default "default" */
     backgroundColor?: string = "default";
+
     /** @default "left" */
     textAlignment?: "left" | "center" | "right" | "justify" = "left";
   };
-
   content?: void;
   children: Block[];
 }
@@ -457,20 +458,22 @@ model VideoBlock {
 model AudioBlock {
   id: BlockId;
   type: BlockType.audio;
-
   props: {
     /** @default "" */
     name?: string = "";
+
     /** @default "" */
     url?: string = "";
+
     /** @default "" */
     caption?: string = "";
+
     /** @default true */
     showPreview?: boolean = true;
+
     /** @default "default" */
     backgroundColor?: string = "default";
   };
-
   content?: void;
   children: Block[];
 }
@@ -497,14 +500,12 @@ model TableBlock {
 model ColumnBlock {
   id: BlockId;
   type: BlockType.column;
-
   props: {
     /**
      * Width of the column
      */
     width: numeric;
   };
-
   content?: void;
   children: Block[];
 }
@@ -545,35 +546,4 @@ union Block {
   TableBlock,
   ColumnBlock,
   ColumnListBlock,
-}
-
-/**
- * Partial block for creating new blocks.
- * All fields except type are optional.
- */
-model PartialBlock {
-  /**
-   * Optional block ID (generated if not provided)
-   */
-  id?: BlockId;
-
-  /**
-   * Block type (required)
-   */
-  type: string;
-
-  /**
-   * Optional block properties
-   */
-  props?: Record<unknown>;
-
-  /**
-   * Optional content
-   */
-  content?: InlineContent[] | TableContent;
-
-  /**
-   * Optional nested children
-   */
-  children?: Block[];
 }
