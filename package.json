@@ -4,6 +4,13 @@
   "description": "TypeSpec definitions for BlockNote document schema",
   "license": "MIT",
   "type": "module",
+  "repository": {
+    "url": "https://github.com/typespecs/BlockNote"
+  },
+  "author": {
+    "name": "Stephan Meijer",
+    "email": "typespecs@stephanmeijer.com"
+  },
   "exports": {
     ".": {
       "typespec": "./lib/main.tsp"
